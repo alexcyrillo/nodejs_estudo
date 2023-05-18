@@ -1,0 +1,19 @@
+{
+  "name": "desafio_backend",
+  "version": "1.0.0",
+  "description": "Criação de um backend de um controle de episodios de séries",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon index.js"
+  },
+  "author": "ALex Cyrillo",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
