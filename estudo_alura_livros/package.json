@@ -11,6 +11,7 @@
   "author": "Alex Cyrillo",
   "license": "ISC",
   "devDependencies": {
+    "eslint": "^8.41.0",
     "nodemon": "^2.0.22"
   },
   "dependencies": {
