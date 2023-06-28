@@ -1,0 +1,197 @@
+{
+	"openapi": "3.0.0",
+	"info": {
+		"title": "Projeto Desafio Backend Comp Jr.",
+		"description": " ",
+		"contact": {
+			"email": "alex.borges@compjunior.com.br"
+		}
+	},
+	"version": "1.0.0",
+   "paths": {
+      "/series": {
+         "get": {
+            "summary": "Listagem de séries",
+            "description": "Rota responsável por listar as sérias cadastradas anteriormente pelo usuário",
+            "responses": {
+               "500": {
+                  "description": "Erro interno do servidor"
+               },
+               "200": {
+                  "description": "Series listadas"
+               }
+            }
+         },
+         "post": {
+            "summary": "Cadastro de uma nova série",
+            "description": "Rota desponsável por listar as sérias cadastradas anterioemente pelo usuário",
+            "requestBody": {
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "$ref": "#/components/schemas/Series"
+                     },
+                     "examples": {
+                        "series": {
+                           "value": {
+                              "nome": "Band of Brothers",
+                              "visto": "10",
+                              "naoVistos": "0",
+                              "totalLancado": "10",
+                              "ano": "2001",
+                              "status": "Concluida",
+                              "ondeAssisto": "HBOMax"
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "responses": {
+               "500": {
+                  "description": "Não foi possível cadastrar"
+               },
+               "200": {
+                  "description": "Serie cadastrada com sucesso"
+               }
+            }
+         }
+      },
+      "/series/{id}": {
+         "get": {
+            "summary": "Pesquisa de séries por Id",
+            "description": "Rota responsável por listar as séries por ID",
+            "parameters": [
+               {
+                  "name": "id",
+                  "in": "path",
+                  "description": "Listar série pelo ID",
+                  "required": true
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Série encontrada",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object",
+                           "$ref": "#/components/schemas/Series"
+                        }
+                     }
+                  }
+               },
+               "500": {
+                  "description": "Série não encontrada"
+               }
+            }
+         },
+         "put": {
+            "summary": "Alterar séries por Id",
+            "description": "Rota responsável por alterar os dados de uma série",
+            "parameters": [
+               {
+                  "name": "id",
+                  "in": "path",
+                  "description": "Alteração de série pelo ID",
+                  "required": true
+               }
+            ],
+            "requestBody": {
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "$ref": "#/components/schemas/Series"
+                     },
+                     "examples": {
+                        "series": {
+                           "value": {
+                              "nome": "House of the Dragon",
+                              "visto": "12",
+                              "naoVistos": "0",
+                              "totalLancado": "12",
+                              "ano": "2022",
+                              "status": "Lançando",
+                              "ondeAssisto": "HBOMax"
+                           }
+                        }
+                     }
+                  }
+               }
+            },
+            "responses": {
+               "200": {
+                  "description": "Série atualizada com sucesso",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object",
+                           "$ref": "#/components/schemas/Series"
+                        }
+                     }
+                  }
+               },
+               "400": {
+                  "description": "Id da série não localizado"
+               },
+               "500": {
+                  "description": "Série não cadastrada"
+               }
+            }
+         },
+         "delete": {
+            "summary": "Excluir séries pelo Id",
+            "description": "Rota responsável por excluir os dados de uma série",
+            "parameters": [
+               {
+                  "name": "id",
+                  "in": "path",
+                  "description": "Exclusão de série pelo ID",
+                  "required": true
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Série removida com sucesso"
+               },
+               "500": {
+                  "description": "Id da série não localizado"
+               }
+            }
+         }
+      }
+   },
+   "components": {
+      "schemas": {
+         "Series": {
+            "type": "object",
+            "properties": {
+               "id": {
+                  "type": "string"
+               },
+               "nome": {
+                  "type": "string"
+               },
+               "visto": {
+                  "type": "number"
+               },
+               "naoVistos": {
+                  "type": "number"
+               },
+               "totalLancado": {
+                  "type": "number"
+               },
+               "ano": {
+                  "type": "number"
+               },
+               "status": {
+                  "type": "string"
+               },
+               "ondeAssisto": {
+                  "type": "string"
+               }
+            }
+         }
+      }
+   }
+}

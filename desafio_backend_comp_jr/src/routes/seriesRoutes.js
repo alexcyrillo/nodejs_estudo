@@ -4,10 +4,11 @@ import seriesController from "../controllers/seriesControler.js";
 const router = express.Router();
 
 router
-	.get("/minhasseries", seriesController.listar)
-	.get("/livros/busca", seriesController.listarPorId)
-	.post("/minhasseries",seriesController.cadastrar)
-	.put("/minhasseries/:id", seriesController.modificar)
-	.delete("/minhasseries/:id", seriesController.exluir);
+	.get("/series", seriesController.listar)
+	// .get("/series/busca", seriesController.listarPorNome)
+	.get("/series/:id", seriesController.listarPorId)
+	.post("/series",seriesController.cadastrar)
+	.put("/series/:id", seriesController.modificar)
+	.delete("/series/:id", seriesController.exluir);
 
 export default router;

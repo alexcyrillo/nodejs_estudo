@@ -1,5 +1,4 @@
 import express from "express";
-import episodios from "./episodiosRoutes.js";
 import series from "./seriesRoutes.js";
 
 const routes = (app) => {
@@ -12,7 +11,7 @@ const routes = (app) => {
 		});
 	});
 
-	app.use(express.json(), series, episodios);
+	app.use(express.json(), series);
 };
 
 export default routes;
